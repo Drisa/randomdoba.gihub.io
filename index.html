@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Music Video Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      /* CSS for video player */
+      #player {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+      }
+      #player iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+<style>
+  body {
+    background-color: #222;
+    color: #fff;
+  }
+  #player {
+    width: 100%;
+    height: 0;
+    background-color: #000;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+          <h1 class="text-center mb-5">Welcome to our random music video player!</h1>
+          <div id="player"></div>
+          <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary" id="watch-on-youtube" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+          <p class="text-center mt-5">Discover new and exciting music from hip hop, dancehall, afro, reggae, and more. Simply click "Watch on YouTube" to be directed to a random music video on YouTube that you may have never heard before. Our website automatically selects a video every 5 seconds, so sit back, relax, and enjoy the thrill of discovering new music today!</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // JavaScript code to load videos
+      var videoIds = [
+        "y1Jkkjef84c",
+        "e65UrKlKAic",
+        "Ip4GEm1XIZs"
+      ];
+      var playerDiv = document.getElementById("player");
+      var watchOnYouTubeBtn = document.getElementById("watch-on-youtube");
+      function loadVideo() {
+        var index = Math.floor(Math.random() * videoIds.length);
+        playerDiv.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoIds[index] + '?controls=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        watchOnYouTubeBtn.href = 'https://www.youtube.com/watch?v=' + videoIds[index];
+        setTimeout(loadVideo, 5000); // Load the next video after 5 seconds
+      }
+      // Call the loadVideo function to start playing the first video
+      loadVideo();
+    </script>
+  </body>
+</html>
